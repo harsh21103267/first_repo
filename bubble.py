@@ -1,50 +1,34 @@
-// Optimized implementation of Bubble sort
-#include <stdbool.h>
-#include <stdio.h>
+# Optimized Python program for implementation of Bubble Sort
 
-void swap(int* xp, int* yp)
-{
-	int temp = *xp;
-	*xp = *yp;
-	*yp = temp;
-}
 
-// An optimized version of Bubble Sort
-void bubbleSort(int arr[], int n)
-{
-	int i, j;
-	bool swapped;
-	for (i = 0; i < n - 1; i++) {
-		swapped = false;
-		for (j = 0; j < n - i - 1; j++) {
-			if (arr[j] > arr[j + 1]) {
-				swap(&arr[j], &arr[j + 1]);
-				swapped = true;
-			}
-		}
+def bubbleSort(arr):
+	n = len(arr)
+	
+	# Traverse through all array elements
+	for i in range(n):
+		swapped = False
 
-		// If no two elements were swapped by inner loop,
-		// then break
-		if (swapped == false)
-			break;
-	}
-}
+		# Last i elements are already in place
+		for j in range(0, n-i-1):
 
-// Function to print an array
-void printArray(int arr[], int size)
-{
-	int i;
-	for (i = 0; i < size; i++)
-		printf("%d ", arr[i]);
-}
+			# Traverse the array from 0 to n-i-1
+			# Swap if the element found is greater
+			# than the next element
+			if arr[j] > arr[j+1]:
+				arr[j], arr[j+1] = arr[j+1], arr[j]
+				swapped = True
+		if (swapped == False):
+			break
 
-// Driver program to test above functions
-int main()
-{
-	int arr[] = { 64, 34, 25, 12, 22, 11, 90 };
-	int n = sizeof(arr) / sizeof(arr[0]);
-	bubbleSort(arr, n);
-	printf("Sorted array: \n");
-	printArray(arr, n);
-	return 0;
-}
+
+# Driver code to test above
+if __name__ == "__main__":
+	arr = [64, 34, 25, 12, 22, 11, 90]
+
+	bubbleSort(arr)
+
+	print("Sorted array:")
+	for i in range(len(arr)):
+		print("%d" % arr[i], end=" ")
+
+# This code is modified by Suraj krushna Yadav
